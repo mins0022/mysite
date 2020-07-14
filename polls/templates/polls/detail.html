@@ -1,0 +1,20 @@
+
+
+<!-- action ->정보를 어디로 보낼 것인가, method - get request head에 넣는가/주소창에 노출이 되는가  post request body/ 주소창에 노출이 되지 않음,
+     enctype -> 파일을 업로드 할 때 사용 - form 의 입자응로서 중요하게 생각하는 것  form tag는 submit 이라는 것이 있어야 작동함-->
+<form action ="post">
+    {% csrf_token %}
+
+ <!-- input, select, textarea 외워야하고 알아야한다. id 와 name을 쓰지않으면 서버로 넘어가지 않음 -->
+<h1>{{ question.question_text }}</h1>
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>
+            <input type = "radio" name="choice" 
+            value="{{choice.id}}" id ="{{choice.id}}">
+            <label for="{{choice.id}}">{{ choice.choice_text }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+    <input type = "submit" value ="전송">
+</form>
